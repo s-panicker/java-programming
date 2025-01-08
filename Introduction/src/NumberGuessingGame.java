@@ -26,6 +26,7 @@ public class NumberGuessingGame {
                 System.out.println("Congratulations! You guessed the number in " + attempts + " attempts.");
             }
         }
+        //Adding comments
 
         scanner.close();
     }
