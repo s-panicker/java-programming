@@ -18,5 +18,6 @@ public class Main {
         // Create a Car object
         Car myCar = new Car();
         myCar.move();  // This will call the overridden method in the Car class
+         // Output: Book Title: Java Basics, Author: John Doe
     }
 }
