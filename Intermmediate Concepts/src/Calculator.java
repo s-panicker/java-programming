@@ -36,7 +36,13 @@ class Calculator {
         System.out.print("Enter second number: ");
         double num2 = scanner.nextDouble();
 
-
+        System.out.println("\nChoose an operation:");
+        System.out.println("1. Add");
+        System.out.println("2. Subtract");
+        System.out.println("3. Multiply");
+        System.out.println("4. Divide");
+        System.out.print("Enter your choice: ");
+        int choice = scanner.nextInt();
 
         double result = 0;
 
