@@ -1,3 +1,0 @@
-Java is great
-Multithreading rocks
-File IO is easy
