@@ -14,7 +14,7 @@ import main.Game;
 public class Crabby extends Enemy {
 
 	// AttackBox
-	private Rectangle2D.Float attackBox;
+	private Float attackBox;
 	private int attackBoxOffsetX;
 
 	public Crabby(float x, float y) {
@@ -24,7 +24,7 @@ public class Crabby extends Enemy {
 	}
 
 	private void initAttackBox() {
-		attackBox = new Rectangle2D.Float(x, y, (int) (82 * Game.SCALE), (int) (19 * Game.SCALE));
+		attackBox = new Float(x, y, (int) (82 * Game.SCALE), (int) (19 * Game.SCALE));
 		attackBoxOffsetX = (int) (Game.SCALE * 30);
 	}
 

@@ -49,7 +49,7 @@ public class Player extends Entity {
 	private int healthWidth = healthBarWidth;
 
 	// AttackBox
-	private Rectangle2D.Float attackBox;
+	private Float attackBox;
 
 	private int flipX = 0;
 	private int flipW = 1;
@@ -66,7 +66,7 @@ public class Player extends Entity {
 	}
 
 	private void initAttackBox() {
-		attackBox = new Rectangle2D.Float(x, y, (int) (20 * Game.SCALE), (int) (20 * Game.SCALE));
+		attackBox = new Float(x, y, (int) (20 * Game.SCALE), (int) (20 * Game.SCALE));
 	}
 
 	public void update() {
