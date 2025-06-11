@@ -2,15 +2,12 @@ package main;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.JPanel;
 
 import inputs.KeyboardInputs;
-import inputs.MouseInputs;
 
 public class GamePanel extends JPanel {
 
