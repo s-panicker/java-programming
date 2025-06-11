@@ -7,8 +7,6 @@ import java.util.Random;
 
 import javax.swing.JPanel;
 
-import inputs.KeyboardInputs;
-
 public class GamePanel extends JPanel {
 
     private MouseInputs mouseInputs;
