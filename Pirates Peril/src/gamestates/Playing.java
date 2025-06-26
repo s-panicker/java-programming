@@ -8,11 +8,9 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
-import entities.Crabby;
 import entities.EnemyManager;
 import entities.Player;
 import levels.LevelManager;
-import main.Game;
 import ui.GameOverOverlay;
 import ui.PauseOverlay;
 import utilz.LoadSave;

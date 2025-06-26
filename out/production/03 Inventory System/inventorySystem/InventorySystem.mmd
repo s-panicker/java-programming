@@ -1,0 +1,59 @@
+classDiagram
+  class Product {
+    -String productId
+    -String name
+    -String description
+    -double price
+    -int quantity
+    -String category
+    -String supplier
+    -int minStockLevel
+    +getProductId() String
+    +setProductId(String) void
+    +getName() String
+    +setName(String) void
+    +getPrice() double
+    +setPrice(double) void
+    +getQuantity() int
+    +setQuantity(int) void
+    +addStock(int) void
+    +removeStock(int) boolean
+    +isLowStock() boolean
+    +getTotalValue() double
+  }
+
+  class Transaction {
+    -String transactionId
+    -String productId
+    -String type
+    -int quantity
+    -LocalDate date
+    -String notes
+    +getTransactionId() String
+    +getProductId() String
+    +getType() String
+    +getQuantity() int
+    +getDate() LocalDate
+    +recordTransaction() void
+  }
+
+  class InventorySystem {
+    -Map~String,Product~ products
+    -List~Transaction~ transactions
+    -Scanner scanner
+    -int nextTransactionId
+    +addProduct(Product) void
+    +getProduct(String) Product
+    +removeProduct(String) void
+    +addStock(String, int) void
+    +removeStock(String, int) boolean
+    +getAllProducts() List~Product~
+    +getLowStockProducts() List~Product~
+    +displayInventory() void
+    +getTotalInventoryValue() double
+    +runInteractiveMenu() void
+  }
+
+  InventorySystem "1" --o "0..*" Product : manages
+  InventorySystem "1" --o "0..*" Transaction : records
+  Transaction "0..*" --> "1" Product : affects

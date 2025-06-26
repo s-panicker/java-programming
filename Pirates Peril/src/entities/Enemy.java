@@ -7,8 +7,6 @@ import java.awt.geom.Rectangle2D;
 
 import static utilz.Constants.Directions.*;
 
-import main.Game;
-
 public abstract class Enemy extends Entity {
 	protected int aniIndex, enemyState, enemyType;
 	protected int aniTick, aniSpeed = 25;

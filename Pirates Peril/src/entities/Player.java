@@ -5,12 +5,10 @@ import static utilz.HelpMethods.*;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.geom.Rectangle2D;
 import java.awt.geom.Rectangle2D.Float;
 import java.awt.image.BufferedImage;
 
 import gamestates.Playing;
-import main.Game;
 import utilz.LoadSave;
 
 public class Player extends Entity {

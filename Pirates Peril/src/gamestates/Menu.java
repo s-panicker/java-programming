@@ -5,7 +5,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
-import main.Game;
 import ui.MenuButton;
 import utilz.LoadSave;
 
