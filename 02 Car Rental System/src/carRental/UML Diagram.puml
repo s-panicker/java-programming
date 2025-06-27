@@ -1,15 +1,193 @@
-@startuml
-'https://plantuml.com/sequence-diagram
+@startuml CarRentalSystem
 
-autonumber
+!define ENTITY class
+!define AGGREGATION <>--
+!define COMPOSITION *--
+!define ASSOCIATION --
+!define INHERITANCE --|>
 
-== Initialization ==
+' Car Class
+ENTITY Car {
+  - carId: String
+  - brand: String
+  - model: String
+  - year: int
+  - color: String
+  - dailyRate: double
+  - isAvailable: boolean
+  - category: String
+  --
+  + Car(carId: String, brand: String, model: String, year: int, color: String, dailyRate: double, category: String)
+  + getCarId(): String
+  + setCarId(carId: String): void
+  + getBrand(): String
+  + setBrand(brand: String): void
+  + getModel(): String
+  + setModel(model: String): void
+  + getYear(): int
+  + setYear(year: int): void
+  + getColor(): String
+  + setColor(color: String): void
+  + getDailyRate(): double
+  + setDailyRate(dailyRate: double): void
+  + isAvailable(): boolean
+  + setAvailable(available: boolean): void
+  + getCategory(): String
+  + setCategory(category: String): void
+  + getCarDetails(): String
+  + rentCar(): void
+  + returnCar(): void
+  + toString(): String
+  + equals(obj: Object): boolean
+  + hashCode(): int
+}
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+' Customer Class
+ENTITY Customer {
+  - customerId: String
+  - firstName: String
+  - lastName: String
+  - email: String
+  - phoneNumber: String
+  - driverLicense: String
+  - rentalHistory: List<Rental>
+  --
+  + Customer(customerId: String, firstName: String, lastName: String, email: String, phoneNumber: String, driverLicense: String)
+  + getCustomerId(): String
+  + setCustomerId(customerId: String): void
+  + getFirstName(): String
+  + setFirstName(firstName: String): void
+  + getLastName(): String
+  + setLastName(lastName: String): void
+  + getEmail(): String
+  + setEmail(email: String): void
+  + getPhoneNumber(): String
+  + setPhoneNumber(phoneNumber: String): void
+  + getDriverLicense(): String
+  + setDriverLicense(driverLicense: String): void
+  + getRentalHistory(): List<Rental>
+  + getFullName(): String
+  + addRental(rental: Rental): void
+  + getCurrentRental(): Rental
+  + hasActiveRental(): boolean
+  + getTotalSpent(): double
+  + toString(): String
+  + equals(obj: Object): boolean
+  + hashCode(): int
+}
 
-== Repetition ==
+' Rental Class
+ENTITY Rental {
+  - rentalId: String
+  - customer: Customer
+  - car: Car
+  - startDate: LocalDate
+  - endDate: LocalDate
+  - actualReturnDate: LocalDate
+  - totalCost: double
+  - isActive: boolean
+  - status: String
+  --
+  + Rental(rentalId: String, customer: Customer, car: Car, startDate: LocalDate, endDate: LocalDate)
+  + getRentalId(): String
+  + setRentalId(rentalId: String): void
+  + getCustomer(): Customer
+  + setCustomer(customer: Customer): void
+  + getCar(): Car
+  + setCar(car: Car): void
+  + getStartDate(): LocalDate
+  + setStartDate(startDate: LocalDate): void
+  + getEndDate(): LocalDate
+  + setEndDate(endDate: LocalDate): void
+  + getActualReturnDate(): LocalDate
+  + setActualReturnDate(actualReturnDate: LocalDate): void
+  + getTotalCost(): double
+  + setTotalCost(totalCost: double): void
+  + isActive(): boolean
+  + setActive(active: boolean): void
+  + getStatus(): String
+  + setStatus(status: String): void
+  + getRentalDays(): long
+  + calculateTotalCost(): double
+  + completeRental(): void
+  + cancelRental(): void
+  + isOverdue(): boolean
+  + getOverdueDays(): long
+  + toString(): String
+}
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+' CarRentalSystem Class
+ENTITY CarRentalSystem {
+  - cars: Map<String, Car>
+  - customers: Map<String, Customer>
+  - rentals: Map<String, Rental>
+  - scanner: Scanner
+  - nextRentalId: int
+  --
+  + CarRentalSystem()
+  + addCar(car: Car): void
+  + getCar(carId: String): Car
+  + removeCar(carId: String): void
+  + getAvailableCars(): List<Car>
+  + getCarsByCategory(category: String): List<Car>
+  + addCustomer(customer: Customer): void
+  + getCustomer(customerId: String): Customer
+  + removeCustomer(customerId: String): void
+  + rentCar(customerId: String, carId: String, startDate: LocalDate, endDate: LocalDate): String
+  + returnCar(rentalId: String): void
+  + cancelRental(rentalId: String): void
+  + displayAvailableCars(): void
+  + displayCustomerRentals(customerId: String): void
+  + displayAllRentals(): void
+  + displayOverdueRentals(): void
+  + runInteractiveMenu(): void
+  - displayMenu(): void
+  - handleAddCar(): void
+  - handleAddCustomer(): void
+  - handleRentCar(): void
+  - handleReturnCar(): void
+  - handleCustomerRentals(): void
+  - handleCancelRental(): void
+  - getIntInput(prompt: String): int
+  - getDoubleInput(prompt: String): double
+  + main(args: String[]): void
+}
+
+' Relationships
+CarRentalSystem "1" *-- "0..*" Car : manages
+CarRentalSystem "1" *-- "0..*" Customer : manages
+CarRentalSystem "1" *-- "0..*" Rental : manages
+Customer <>-- Rental : has rental history
+Rental ASSOCIATION "1" -- "1" Customer : rented by
+Rental ASSOCIATION "1" -- "1" Car : involves
+
+' Notes
+note right of Car
+  Represents vehicles available
+  for rental in the system.
+  Tracks availability status
+  and rental rates.
+end note
+
+note right of Customer
+  Represents customers who
+  can rent cars. Maintains
+  rental history and contact
+  information.
+end note
+
+note right of Rental
+  Represents a rental transaction
+  linking a customer to a car
+  for a specific time period.
+  Handles cost calculations.
+end note
+
+note right of CarRentalSystem
+  Main system class that
+  orchestrates all operations
+  and provides user interface
+  for the rental system.
+end note
+
 @enduml

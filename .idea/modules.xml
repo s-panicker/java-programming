@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/02 Car Rental System/02 Car Rental System.iml" filepath="$PROJECT_DIR$/02 Car Rental System/02 Car Rental System.iml" />
+      <module fileurl="file://$PROJECT_DIR$/03 Inventory System/03 Inventory System.iml" filepath="$PROJECT_DIR$/03 Inventory System/03 Inventory System.iml" />
+      <module fileurl="file://$PROJECT_DIR$/01 Booking System/Class Projects or Pair Programming.iml" filepath="$PROJECT_DIR$/01 Booking System/Class Projects or Pair Programming.iml" />
       <module fileurl="file://$PROJECT_DIR$/Intermmediate Concepts/Intermmediate Concepts.iml" filepath="$PROJECT_DIR$/Intermmediate Concepts/Intermmediate Concepts.iml" />
       <module fileurl="file://$PROJECT_DIR$/Introduction/Introduction.iml" filepath="$PROJECT_DIR$/Introduction/Introduction.iml" />
       <module fileurl="file://$PROJECT_DIR$/Projects/Projects.iml" filepath="$PROJECT_DIR$/Projects/Projects.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/java-programming.iml" filepath="$PROJECT_DIR$/.idea/java-programming.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Projects/theFinalBoss/theFinalBoss.iml" filepath="$PROJECT_DIR$/Projects/theFinalBoss/theFinalBoss.iml" />
     </modules>
   </component>
 </project>
