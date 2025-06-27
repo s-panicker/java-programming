@@ -1,0 +1,127 @@
+@startuml InventorySystem
+
+' Product Class
+class Product {
+  - productId: String
+  - name: String
+  - description: String
+  - price: double
+  - quantity: int
+  - category: String
+  - supplier: String
+  - minStockLevel: int
+  --
+  + Product(productId: String, name: String, description: String, price: double, quantity: int, category: String, supplier: String, minStockLevel: int)
+  + getProductId(): String
+  + setProductId(productId: String): void
+  + getName(): String
+  + setName(name: String): void
+  + getDescription(): String
+  + setDescription(description: String): void
+  + getPrice(): double
+  + setPrice(price: double): void
+  + getQuantity(): int
+  + setQuantity(quantity: int): void
+  + getCategory(): String
+  + setCategory(category: String): void
+  + getSupplier(): String
+  + setSupplier(supplier: String): void
+  + getMinStockLevel(): int
+  + setMinStockLevel(minStockLevel: int): void
+  + addStock(amount: int): void
+  + removeStock(amount: int): boolean
+  + isLowStock(): boolean
+  + getTotalValue(): double
+  + toString(): String
+  + equals(obj: Object): boolean
+  + hashCode(): int
+}
+
+' Transaction Class
+class Transaction {
+  - transactionId: String
+  - productId: String
+  - type: String
+  - quantity: int
+  - date: LocalDate
+  - notes: String
+  --
+  + Transaction(transactionId: String, productId: String, type: String, quantity: int, date: LocalDate, notes: String)
+  + getTransactionId(): String
+  + setTransactionId(transactionId: String): void
+  + getProductId(): String
+  + setProductId(productId: String): void
+  + getType(): String
+  + setType(type: String): void
+  + getQuantity(): int
+  + setQuantity(quantity: int): void
+  + getDate(): LocalDate
+  + setDate(date: LocalDate): void
+  + getNotes(): String
+  + setNotes(notes: String): void
+  + toString(): String
+}
+
+' InventorySystem Class
+class InventorySystem {
+  - products: Map<String, Product>
+  - transactions: List<Transaction>
+  - scanner: Scanner
+  - nextTransactionId: int
+  --
+  + InventorySystem()
+  + addProduct(product: Product): void
+  + getProduct(productId: String): Product
+  + removeProduct(productId: String): void
+  + updateProduct(productId: String, product: Product): void
+  + addStock(productId: String, quantity: int): void
+  + removeStock(productId: String, quantity: int): boolean
+  + getAllProducts(): List<Product>
+  + getProductsByCategory(category: String): List<Product>
+  + getLowStockProducts(): List<Product>
+  + searchProducts(keyword: String): List<Product>
+  + recordTransaction(productId: String, type: String, quantity: int, notes: String): void
+  + getTransactionHistory(): List<Transaction>
+  + displayInventory(): void
+  + displayLowStockAlert(): void
+  + displayTransactionHistory(): void
+  + getTotalInventoryValue(): double
+  + runInteractiveMenu(): void
+  - displayMenu(): void
+  - handleAddProduct(): void
+  - handleUpdateStock(): void
+  - handleRemoveStock(): void
+  - handleSearchProducts(): void
+  - getIntInput(prompt: String): int
+  - getDoubleInput(prompt: String): double
+  + main(args: String[]): void
+}
+
+' Relationships
+InventorySystem "1" -- "0..*" Product : manages
+InventorySystem "1" -- "0..*" Transaction : records
+Transaction "0..*" -- "1" Product : affects
+
+' Notes
+note right of Product
+  Represents items in inventory.
+  Tracks stock levels, pricing,
+  and supplier information.
+  Alerts when stock is low.
+end note
+
+note right of Transaction
+  Records all inventory movements
+  including stock additions,
+  removals, and adjustments.
+  Maintains audit trail.
+end note
+
+note right of InventorySystem
+  Main system class that manages
+  all inventory operations.
+  Provides user interface and
+  reporting capabilities.
+end note
+
+@enduml
